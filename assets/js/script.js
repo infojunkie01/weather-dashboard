@@ -24,7 +24,7 @@ var getLatLon = function (city) {
       response.json().then(function (data) {
 
         // get city name and insert into element
-        city = data.name
+        city = data.name;
         $('#current-city').text(city)
 
         // get lat and lon coordinates for more compreshensive api call, which will be used to get data
@@ -48,8 +48,10 @@ function getCityWeather(lat, lon) {
     // request was successful
     if (response.ok) {
       response.json().then(function (data) {
-        currentWeather = data.current
-          insertCurrentWeather(currentWeather)
+        current = data.current
+        forecast = data.daily
+        insertCurrentWeather(current)
+        insertForecast(forecast)
       });
     } else {
       alert("Error with lat and lon");
@@ -59,15 +61,23 @@ function getCityWeather(lat, lon) {
 }
 
 function insertCurrentWeather(data) {
-  console.log(data)
   $('#current-temp').text(data.temp)
   $('#current-wind').text(data.wind_speed)
   $('#current-humidity').text(data.humidity)
   $('#current-uv').text(data.uvi)
-
-
 }
 
+function insertForecast(data) {
+  console.log(data)
+ 
+  for (i = 0; i < 5; i++){
+    console.log(data[i])
+    day = i+1;
+    $('#forecast-temp-'+day).text(data[i].temp.day)
+    $('#forecast-wind-'+day).text(data[i].wind_speed)
+    $('#forecast-humidity-'+day).text(data[i].humidity)
+  }
+}
 
 $('#search-button').on('click', function () {
 
