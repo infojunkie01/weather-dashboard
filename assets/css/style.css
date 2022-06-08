@@ -1,11 +1,18 @@
+:root{
+  --mdgray: rgb(17, 18, 26);
+  --dkgray:rgb(8, 9, 12);
+  
+ 
+}
+
 body{
   font-family: Arial, Helvetica, sans-serif;
-  color:rgb(46, 52, 69);
+  background-color: var(--mdgray) !important;
+  color: rgb(62, 131, 215) !important;
 }
 
 header{
-  background-color: rgb(0, 145, 255);
-  color: white;
+  background-color:rgb(8, 9, 12);
   font-size: 1em;
   margin-bottom: 1em;
 }
@@ -21,29 +28,35 @@ h2{
   font-weight: bold;
 }
 
+input{
+  background-color: var(--dkgray);
+  outline: none;
+  border: .5px solid rgb(62, 131, 215) !important;
+  color: gainsboro;
+}
+
+
 #search-city {
   display: inline-block;
 }
 #search-city input{
   width: 100%;
   margin: 1em 0 1em 0;
-  border: 1px solid lightsteelblue;
   padding: .2em;
-  border-radius: 4px
+  border-radius: 9px;
 }
 
 #search-city button{
+  background-color: rgb(0, 81, 255);
+  color: gainsboro;
   width: 100%;
-  color: white;
-  border-radius: 4px;
-  background-color: lightskyblue;
+  border-radius: 9px;
   border: none;
   padding: .2em;
 }
 
 #current-weather{
-  background-color: rgb(244, 244, 244);
-  height: 10em;
+  background-color: var(--dkgray);
   width: 100%;
   padding: 1em;
   display: inline-block;
@@ -54,7 +67,7 @@ h2{
   width: 100%;
 }
 .card-5-day{
-  background-color: lightgray;
+  background-color: var(--dkgray);
   min-width: 17%;
   height: 10em;
   

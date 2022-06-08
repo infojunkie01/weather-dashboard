@@ -1,13 +1,15 @@
-
-// GIVEN a weather dashboard with form inputs
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
+
 // WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+// the date, an icon representation of weather conditions
+
 // WHEN I view the UV index
 // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+
 // WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions
+
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
@@ -70,12 +72,14 @@ function insertCurrentWeather(data) {
 function insertForecast(data) {
   console.log(data)
  
-  for (i = 0; i < 5; i++){
+  for (i = 1; i < 6; i++){
     console.log(data[i])
-    day = i+1;
-    $('#forecast-temp-'+day).text(data[i].temp.day)
-    $('#forecast-wind-'+day).text(data[i].wind_speed)
-    $('#forecast-humidity-'+day).text(data[i].humidity)
+    var date = new Date(data[i].dt*1000)
+    var date_formatted = (date.getMonth()+1) + "/" +  date.getDate()  + "/" +  date.getFullYear().toString().substr(-2);
+    $('#forecast-date-' + i).text(date_formatted)
+    $('#forecast-temp-' + i).text(data[i].temp.day)
+    $('#forecast-wind-' + i).text(data[i].wind_speed)
+    $('#forecast-humidity-' + i).text(data[i].humidity)
   }
 }
 
