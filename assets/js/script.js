@@ -48,8 +48,8 @@ function getCityWeather(lat, lon) {
     // request was successful
     if (response.ok) {
       response.json().then(function (data) {
-        current =
-          insertCurrentWeather(data)
+        currentWeather = data.current
+          insertCurrentWeather(currentWeather)
       });
     } else {
       alert("Error with lat and lon");
@@ -60,6 +60,10 @@ function getCityWeather(lat, lon) {
 
 function insertCurrentWeather(data) {
   console.log(data)
+  $('#current-temp').text(data.temp)
+  $('#current-wind').text(data.wind_speed)
+  $('#current-humidity').text(data.humidity)
+  $('#current-uv').text(data.uvi)
 
 
 }
