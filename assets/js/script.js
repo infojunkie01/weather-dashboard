@@ -1,9 +1,6 @@
 // WHEN I view the UV index
 // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
 
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
-
 let previousSearches = [];
 
 var getLatLon = function (city) {
@@ -68,10 +65,10 @@ function insertCurrentWeather(data) {
 
 function insertForecast(data) {
   console.log(data)
- 
-  for (i = 1; i < 6; i++){
-    var date = new Date(data[i].dt*1000)
-    var date_formatted = (date.getMonth()+1) + "/" +  date.getDate()  + "/" +  date.getFullYear().toString().substr(-2);
+
+  for (i = 1; i < 6; i++) {
+    var date = new Date(data[i].dt * 1000)
+    var date_formatted = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear().toString().substr(-2);
     var image_source = "https://openweathermap.org/img/wn/" + data[i].weather[0].icon + ".png"
     $('#forecast-date-' + i).text(date_formatted)
     $('#forecast-icon-' + i).attr("src", image_source)
@@ -81,23 +78,30 @@ function insertForecast(data) {
   }
 }
 
-function saveSearch(city){
+function saveSearch(city) {
   previousSearches.push(city)
   const historyDiv = document.getElementById('search-history');
   const newButton = document.createElement("button");
-  newButton.innerText = city
+  newButton.innerText = city;
+  newButton.classList.add('past-search-button')
   historyDiv.appendChild(newButton)
 }
 
-// function createButton{
-  
-// }
-
-
+// loads data when submit button clicked
 $('#search-button').on('click', function () {
-
   var city = document.getElementById('search-box').value;
-
   getLatLon(city)
-
 })
+
+// loads data when previous search history clicked
+$(document).on('click', '.past-search-button', function () {
+  var city = $(this).text();
+  getLatLon(city)
+});
+
+// disables 'enter' key affecting input
+$("input").keydown(function (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+  }
+});

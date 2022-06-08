@@ -19,66 +19,66 @@
     <h1 class="display-3">Weather Dashboard</h1>
   </header>
 
-  <div class="container d-flex">
+  <div class="container d-flex flex-wrap">
     <!-- Timeblocks go here -->
-    <div class="col-4" id="searches">
-      <div id="search-city">
-        <form id="search-form" class="card-body pt-0 pl-0">
-          <h2 class="">Search for a city</h2>
+    <div class="col-xs-12 col-md-4 pr-5 " id="searches">
+      <div id="search-city"  class="w-100">
+        <form id="search-form" class="card-body pt-0 pl-0 pr-0">
+          <h2 class="">Search for city</h2>
           <input name="search-box" id="search-box" type="text" autofocus="true" class="form-input">
           <button id="search-button" type="button" class="btn">Search</button>
         </form>
       </div>
       <hr>
-      <div id="search-history">
-
+      <div id="search-history" class="mt-4">
       </div>
-      
     </div>
 
-    <div class="col-8" id="weather-report">
+    <div class="col-xs-12 col-md-8" id="weather-report">
+
       <div class="row mb-5" id="current-weather">
         <h2 id="current-city"></h2>
-        <img id="current-icon">
+        <img id="current-icon" class="icon">
         <p>Temp: <span id="current-temp"></span></p>
         <p>Wind: <span id="current-wind"></span></p>
         <p>Humidity: <span id="current-humidity"></span></p>
         <p>UV Index: <span id="current-uv"></span></p>
       </div>
-      <div class="" id="forecast-5-day">
-        <h3 class="pb-3">5-Day Forecast</h3>
+
+      <div class="" id="forecasts">
+        <h2 class="pb-3">5-Day Forecast</h2>
         <div id="forecast-5-day-cards" class="row d-flex justify-content-between">
-          <div class="card-5-day" id="day-1">
+          <div class="card-5-day col-md-10 col-lg-2" id="day-1">
             <h4 id="forecast-date-1"></h4>
-            <img id="forecast-icon-1">
+            <img id="forecast-icon-1" class="icon">
             <p>Temp: <span id="forecast-temp-1"></span></p>
             <p>Wind: <span id="forecast-wind-1"></span></p>
             <p>Humidity: <span id="forecast-humidity-1"></span></p>
           </div>
-          <div class="card-5-day" id="day-2">
-            <h2 id="forecast-date-2"></h2>
-            <img id="forecast-icon-2">
+          <div class="card-5-day col-md-10 col-lg-2" id="day-2">
+            <h4 id="forecast-date-2"></h4>
+            <img id="forecast-icon-2" class="icon">
             <p>Temp: <span id="forecast-temp-2"></span></p>
             <p>Wind: <span id="forecast-wind-2"></span></p>
             <p>Humidity: <span id="forecast-humidity-2"></span></p>
           </div>
-          <div class="card-5-day" id="day-3">
-            <h2 id="forecast-date-3"></h2>
-            <img id="forecast-icon-3">
+          <div class="card-5-day col-md-10 col-lg-2" id="day-3">
+            <h4 id="forecast-date-3"></h4>
+            <img id="forecast-icon-3" class="icon">
             <p>Temp: <span id="forecast-temp-3"></span></p>
             <p>Wind: <span id="forecast-wind-3"></span></p>
             <p>Humidity: <span id="forecast-humidity-3"></span></p>
           </div>
-          <div class="card-5-day" id="day-4">
-            <h2 id="forecast-date-4"></h2>
-            <img id="forecast-icon-4">
+          <div class="card-5-day col-md-10 col-lg-2" id="day-4">
+            <h4 id="forecast-date-4"></h4>
+            <img id="forecast-icon-4" class="icon">
             <p>Temp: <span id="forecast-temp-4"></span></p>
             <p>Wind: <span id="forecast-wind-4"></span></p>
             <p>Humidity: <span id="forecast-humidity-4"></span></p>
           </div>
-          <div class="card-5-day" id="day-5">
-            <h2 id="forecast-date-5"></h2>
-            <img id="forecast-icon-5">
+          <div class="card-5-day col-md-10 col-lg-2" id="day-5">
+            <h4 id="forecast-date-5"></h4>
+            <img id="forecast-icon-5" class="icon">
             <p>Temp: <span id="forecast-temp-5"></span></p>
             <p>Wind: <span id="forecast-wind-5"></span></p>
             <p>Humidity: <span id="forecast-humidity-5"></span></p>

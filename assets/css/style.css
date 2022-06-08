@@ -1,6 +1,7 @@
 :root{
   --mdgray: rgb(17, 18, 26);
   --dkgray:rgb(8, 9, 12);
+  --ltblue: rgb(62, 131, 215) ;
   
  
 }
@@ -13,7 +14,7 @@ body{
 }
 
 button{
-  border-radius: 9px;
+  border-radius: 9px !important;
   border: none;
   padding: .2em;
 }
@@ -34,10 +35,14 @@ h2{
   font-weight: bold;
 }
 
+hr{
+  border-top: .5px solid var(--ltblue);
+}
+
 input{
   background-color: var(--dkgray);
   outline: none;
-  border: .5px solid rgb(62, 131, 215) !important;
+  border: .5px solid var(--ltblue)  !important;
   color: gainsboro;
 }
 
@@ -46,6 +51,9 @@ span{
   font-weight: 400;
 }
 
+.icon{
+  height: 4em;
+}
 
 #search-city {
   display: inline-block;
@@ -69,21 +77,29 @@ span{
   color: gainsboro;
   width: 100%;
   margin-bottom: 1em;
+  border: .5px solid rgb(61 74 91);
 }
 #current-weather{
   background-color: var(--dkgray);
   width: 100%;
   padding: 1em;
   display: inline-block;
-  
+  border-radius: 9px;
+}
+
+.card-5-day{
+  background-color: var(--dkgray);
+  min-width: 17%;
+  border-radius: 9px;
+  margin-bottom: 1.5em;
 }
 
 #forecast-5-day-cards{
   width: 100%;
 }
-.card-5-day{
-  background-color: var(--dkgray);
-  min-width: 17%;
-  height: 10em;
-  
+
+#forecasts h4{
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 1em;
 }
