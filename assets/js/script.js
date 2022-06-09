@@ -1,8 +1,31 @@
 // WHEN I view the UV index
 // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
 
-let previousSearches = [];
+// create buttons for previous searches
+function previousSearchesButtons(city) {
+  const historyDiv = document.getElementById('search-history');
+  const newButton = document.createElement("button");
+  newButton.innerText = city;
+  newButton.classList.add('past-search-button')
+  historyDiv.appendChild(newButton)
+}
 
+// load eventsArray
+var loadSearchHistory = function () {
+  previousSearches = JSON.parse(localStorage.getItem("previousSearches"));
+
+  for (i = 0; i < previousSearches.length; i++) {
+    previousSearchesButtons(previousSearches[i]);
+  };
+  // if nothing in localStorage, create eventsArray to store
+  if (!previousSearches) {
+    previousSearches = [];
+  };
+};
+
+loadSearchHistory();
+
+// Function to get lat and lon given city name
 var getLatLon = function (city) {
 
   var baseUrl = 'https://api.openweathermap.org/data/2.5/weather?'
@@ -33,6 +56,7 @@ var getLatLon = function (city) {
   });
 };
 
+// Function for api call
 function getCityWeather(lat, lon) {
   var baseUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='
   var apiKey = 'dfb7a8462db2c88a6cec11d6fb5a530c'
@@ -54,6 +78,7 @@ function getCityWeather(lat, lon) {
 
 }
 
+// Function to insert current weather data in html
 function insertCurrentWeather(data) {
   var image_source = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
   $('#current-temp').text(data.temp)
@@ -61,8 +86,21 @@ function insertCurrentWeather(data) {
   $('#current-wind').text(data.wind_speed)
   $('#current-humidity').text(data.humidity)
   $('#current-uv').text(data.uvi)
+
+  // add class for UV index styling
+  if (data.uvi < 3) {
+    $('#current-uv').addClass("uv-favorable");
+  }
+  else if (data.uvi < 8) {
+    $('#current-uv').addClass("uv-moderate");
+  }
+  else {
+    $('#current-uv').addClass("uv-severe");
+  }
 }
 
+
+// Function to insert forecasts data in html
 function insertForecast(data) {
   console.log(data)
 
@@ -80,23 +118,25 @@ function insertForecast(data) {
 
 function saveSearch(city) {
   previousSearches.push(city)
-  const historyDiv = document.getElementById('search-history');
-  const newButton = document.createElement("button");
-  newButton.innerText = city;
-  newButton.classList.add('past-search-button')
-  historyDiv.appendChild(newButton)
+  previousSearchesButtons(city);
+  // Save to local storage
+  localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
 }
+
+
 
 // loads data when submit button clicked
 $('#search-button').on('click', function () {
   var city = document.getElementById('search-box').value;
   getLatLon(city)
+
 })
 
 // loads data when previous search history clicked
 $(document).on('click', '.past-search-button', function () {
   var city = $(this).text();
   getLatLon(city)
+
 });
 
 // disables 'enter' key affecting input
@@ -105,3 +145,4 @@ $("input").keydown(function (event) {
     event.preventDefault();
   }
 });
+

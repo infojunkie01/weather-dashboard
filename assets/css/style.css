@@ -79,6 +79,7 @@ span{
   margin-bottom: 1em;
   border: .5px solid rgb(61 74 91);
 }
+
 #current-weather{
   background-color: var(--dkgray);
   width: 100%;
@@ -102,4 +103,16 @@ span{
   font-size: 20px;
   font-weight: bold;
   padding-top: 1em;
+}
+
+.uv-favorable{
+  color: cyan;
+}
+
+.uv-moderate{
+  color: yellow;
+}
+
+.uv-severe{
+  color: red;
 }
