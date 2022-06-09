@@ -43,7 +43,7 @@ var getLatLon = function (city) {
         if (!previousSearches.includes(city)) {
           previousSearches.push(city)
           previousSearchesButtons(city);
-        } 
+        };
 
         // Save to local storage
         localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
