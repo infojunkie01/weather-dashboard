@@ -2,15 +2,13 @@
   --mdgray: rgb(17, 18, 26);
   --dkgray:rgb(8, 9, 12);
   --ltblue: rgb(62, 131, 215) ;
-  
- 
 }
 
 body{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200 !important;
   background-color: var(--mdgray) !important;
-  color: rgb(62, 131, 215) !important;
+  color: var(--ltblue) !important;
 }
 
 button{
@@ -33,6 +31,12 @@ h1{
 h2{
   font-size: 1.5em !important;
   font-weight: bold;
+}
+
+h2 span{
+  font-size: 1em !important;
+  font-weight: bold;
+  color: var(--ltblue) !important;
 }
 
 hr{

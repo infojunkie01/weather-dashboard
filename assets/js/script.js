@@ -39,8 +39,14 @@ var getLatLon = function (city) {
         city = data.name;
         $('#current-city').text(city)
 
-        // save name of city searched
-        saveSearch(city)
+        // save name of city searched if not previously searched
+        if (!previousSearches.includes(city)) {
+          previousSearches.push(city)
+          previousSearchesButtons(city);
+        } 
+
+        // Save to local storage
+        localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
 
         // get lat and lon coordinates for more compreshensive api call, which will be used to get data
         lat = data.coord.lat;
@@ -79,6 +85,10 @@ function getCityWeather(lat, lon) {
 // Function to insert current weather data in html
 function insertCurrentWeather(data) {
   var image_source = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+  var date = new Date(data.dt * 1000)
+  var date_formatted = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear().toString().substr(-2);
+  console.log(data)
+  $('#current-date').text(" - " + date_formatted)
   $('#current-temp').text(data.temp)
   $('#current-icon').attr("src", image_source)
   $('#current-wind').text(data.wind_speed)
@@ -114,27 +124,16 @@ function insertForecast(data) {
   }
 }
 
-function saveSearch(city) {
-  previousSearches.push(city)
-  previousSearchesButtons(city);
-  // Save to local storage
-  localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
-}
-
-
-
 // loads data when submit button clicked
 $('#search-button').on('click', function () {
   var city = document.getElementById('search-box').value;
-  getLatLon(city)
-
-})
+  getLatLon(city);
+});
 
 // loads data when previous search history clicked
 $(document).on('click', '.past-search-button', function () {
   var city = $(this).text();
   getLatLon(city)
-
 });
 
 // disables 'enter' key affecting input
