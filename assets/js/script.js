@@ -1,6 +1,3 @@
-// WHEN I view the UV index
-// THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-
 // create buttons for previous searches
 function previousSearchesButtons(city) {
   const historyDiv = document.getElementById('search-history');
@@ -14,13 +11,14 @@ function previousSearchesButtons(city) {
 var loadSearchHistory = function () {
   previousSearches = JSON.parse(localStorage.getItem("previousSearches"));
 
-  for (i = 0; i < previousSearches.length; i++) {
-    previousSearchesButtons(previousSearches[i]);
-  };
   // if nothing in localStorage, create eventsArray to store
   if (!previousSearches) {
     previousSearches = [];
-  };
+  } else {
+    for (i = 0; i < previousSearches.length; i++) {
+      previousSearchesButtons(previousSearches[i]);
+    };
+  }
 };
 
 loadSearchHistory();
